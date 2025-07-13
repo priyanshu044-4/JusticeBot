@@ -27,12 +27,14 @@ function App() {
     setDisplayedAnswer('');
 
     try {
-      const res = await axios.post('http://localhost:8000/ask', {
-        question,
-      });
+      const res = await axios.post(
+        'https://justicebot-backend.onrender.com/ask', // ✅ UPDATED URL
+        { question }
+      );
       setAnswer(res.data.answer);
       animateTyping(res.data.answer);
     } catch (err) {
+      console.error('Error:', err);
       setDisplayedAnswer('❌ Error: Could not reach JusticeBot.');
     }
 
@@ -47,15 +49,13 @@ function App() {
   };
 
   return (
-    // Always add 'dark' class here to force dark theme
     <div className="dark">
       <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 flex flex-col items-center justify-center px-4 py-8">
         <div className="max-w-2xl w-full">
           <div className="relative mb-6">
-            <h1 className="text-4xl font-bold text-indigo-300 text-center w-full">
+            <h1 className="text-4xl font-bold text-indigo-300 text-center">
               ⚖️ JusticeBot
             </h1>
-            {/* Dark mode toggle removed */}
           </div>
 
           <div className="bg-gray-800 shadow-md rounded-xl p-6 space-y-4">
