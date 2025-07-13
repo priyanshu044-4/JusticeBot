@@ -1,0 +1,12 @@
+# Ignore node_modules folders
+frontend/node_modules/
+backend/node_modules/
+
+# Optional: common ignores
+.DS_Store
+.env
+dist/
+build/
+
+backend/.env.txt
+backend/test_openai.py
